@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 CORS(app)
 
-uri = os.getenv("URI")
+uri = os.environ.get("URI")
 client = MongoClient(uri, server_api=ServerApi('1'))
 db = client["StandUp"]
 users_collection = db["Users"]
@@ -67,8 +67,8 @@ def login():
 #     date = datetime.datetime.now()
 #     new_group = {"name": project_name, "members": members, "created_date": date}
 #     load_dotenv() 
-#     account_sid = os.getenv("TWILIO_ACCOUNT_SID")
-#     auth_token = os.getenv("TWILIO_AUTH_TOKEN")
+#     account_sid = os.environ.get("TWILIO_ACCOUNT_SID")
+#     auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
 #     client = Client(account_sid, auth_token)
 
 #     try:
@@ -78,7 +78,7 @@ def login():
 #             cell[0] = "+27"
 #             message = client.messages.create(
 #                 body=f"You have been added to group {project_name}. Your group members are {members}",
-#                 from_=os.getenv("TWILIO_NUMBER"),
+#                 from_=os.environ.get("TWILIO_NUMBER"),
 #                 to = cell,
 #                 )
 #             print(message.body)
