@@ -18,6 +18,13 @@ users_collection = db["Users"]
 groups_collection = db["groups"]
 tasks_collection = db["tasks"]
 
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = 'https://stand-up-frontend-ten.vercel.app'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
+
 @app.route('/auth/login', methods=['POST'])
 def login():
     data = request.json
