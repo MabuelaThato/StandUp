@@ -9,7 +9,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-CORS(app, origins="https://stand-up-frontend-ten.vercel.app")
+CORS(app)
 
 uri = os.getenv("URI")
 client = MongoClient(uri, server_api=ServerApi('1'))
